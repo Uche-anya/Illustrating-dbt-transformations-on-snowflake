@@ -1,0 +1,39 @@
+version: 2
+
+sources:
+  - name: landing
+    description: "Raw data source for landing tables. Contains raw data before transformation."
+    database: my_dbt_database
+    schema: landing_dbt_schema
+    freshness:
+      warn_after: { count: 1, period: day }
+      error_after: { count: 3, period: day }
+    loaded_at_field: Updated_at
+    tables:
+      - name: customers
+        description: "Raw customer data from external source."
+        columns:
+          - name: email
+            description: "Email address of the customer. Should be unique and not null."
+            tests:
+              - not_null
+              - unique
+
+      - name: orders
+        description: "Raw order data from external source."
+        columns:
+          - name: orderid
+            description: "Unique order identifier."
+            tests:
+              - not_null
+              - unique
+
+      - name: orderitems
+        description: "Raw data for items within orders."
+        columns:
+          - name: orderid
+            description: "Order ID for items in the 'orders' table."
+            tests:
+              - not_null
+
+

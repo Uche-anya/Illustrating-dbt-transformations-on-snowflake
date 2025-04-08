@@ -1,0 +1,39 @@
+models:
+  - name: customers_stg
+    description: "Staging table for customers, contains customer details."
+    columns:
+      - name: email
+        description: "Email of the customer. Must be unique and non-null."
+        tests:
+          - string_not_empty  # Custom test to ensure email is not empty
+
+  - name: orders_stg
+    description: "Staging table for orders, contains order details."
+    columns:
+      - name: orderid
+        description: "Unique identifier for each order."
+        tests:
+          - unique  # Ensures the 'orderid' is unique
+          - not_null  # Ensures the 'orderid' is not null
+
+      - name: statuscd
+        description: "Status of the order. Accepted values are 'Completed', 'InProgress', or 'Cancelled'."
+        tests:
+          - accepted_values:
+              values: ['Completed', 'InProgress', 'Cancelled']
+
+  - name: order_items_stg
+    description: "Staging table for order items, contains the details of items within orders."
+    columns:
+      - name: orderid
+        description: "The 'orderid' that relates to the 'orders_stg' model."
+        tests:
+          - relationships:  # Tests the foreign key relationship
+              to: ref('orders_stg')
+              field: orderid
+
+  - name: order_items_uniq
+    description: "Ensures the row count in the 'order_items_uniq' table equals that in the 'orders_stg' model."
+    tests:
+      - dbt_expectations.expect_table_row_count_to_equal_other_table:
+          compare_model: "{{ ref('orders_stg') }}"
