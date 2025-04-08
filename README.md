@@ -1,4 +1,3 @@
-# dbt Snowflake Workflow Example
 
 This project demonstrates a complete dbt (data build tool) workflow using Snowflake as the data warehouse adapter. It covers essential steps from raw data extraction to final analytical models, including testing and documentation.
 
