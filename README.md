@@ -107,4 +107,4 @@ This project demonstrates a complete dbt (data build tool) workflow using Snowfl
 
 ## Contributing
 
-Feel free to fork this repository and contribute by opening issues or pull requests. If you have any ideas or improvements, please share them!
+Feel free to contribute !
