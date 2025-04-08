@@ -34,13 +34,11 @@ This project is designed to demonstrate a complete dbt workflow with Snowflake a
    ```bash
    git clone https://github.com/your-username/my_dbt_project.git
    cd my_dbt_project
-Set Up Your dbt Profile
+
+2. **Set Up Your dbt Profile:**
 
 Configure your Snowflake connection in ~/.dbt/profiles.yml:
-
-yaml
-Copy
-Edit
+ ```bash
 my_dbt_project:
   target: dev
   outputs:
@@ -55,7 +53,8 @@ my_dbt_project:
       schema: <your_schema>
       threads: 1
       client_session_keep_alive: False
-Install Dependencies
+
+3. ** Install Dependencies:**
 
 Install any required dbt packages:
 
