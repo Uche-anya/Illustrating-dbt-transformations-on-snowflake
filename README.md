@@ -34,12 +34,13 @@ This project is designed to demonstrate a complete dbt workflow with Snowflake a
    ```bash
    git clone https://github.com/your-username/my_dbt_project.git
    cd my_dbt_project
-   
-### 2. Set Up Your dbt Profile
+Set Up Your dbt Profile
 
-Configure your Snowflake connection in `~/.dbt/profiles.yml`:
+Configure your Snowflake connection in ~/.dbt/profiles.yml:
 
-```yaml
+yaml
+Copy
+Edit
 my_dbt_project:
   target: dev
   outputs:
@@ -54,55 +55,54 @@ my_dbt_project:
       schema: <your_schema>
       threads: 1
       client_session_keep_alive: False
-
-### 3. Install Dependencies
+Install Dependencies
 
 Install any required dbt packages:
 
-```bash
+bash
+Copy
+Edit
 dbt deps
-
-### 4. Run Your Models
+Run Your Models
 
 Run the models and build the project:
 
-```bash
+bash
+Copy
+Edit
 dbt run
-
-### 5. Run Tests
+Run Tests
 
 Validate your models and source data with:
 
-```bash
-dbt run
+bash
+Copy
+Edit
+dbt test
+Generate Documentation
 
-### 6. Generate Documentation
+Create and serve interactive documentation:
 
-Validate your models and source data with:
-
-```bash
+bash
+Copy
+Edit
 dbt docs generate
 dbt docs serve
+Additional Concepts Covered
+Incremental Materialization:
+Only new or updated rows are processed during each run, making data loads more efficient.
 
-## Additional Concepts Covered
+Snapshots:
+Track historical changes in data using dbt snapshots (SCD Type 2).
 
-- **Incremental Materialization:**  
-  Only new or updated rows are processed during each run, making data loads more efficient.
+Jinja Templating & Macros:
+Write reusable code and dynamically generate SQL queries.
 
-- **Snapshots:**  
-  Track historical changes in data using dbt snapshots (SCD Type 2).
+Seeds & Sources:
+Load CSV reference data (seeds) and configure raw source data (sources) with tests for data quality and freshness.
 
-- **Jinja Templating & Macros:**  
-  Write reusable code and dynamically generate SQL queries.
+DBT Tests & Doc Blocks:
+Ensure data quality by running tests defined in YAML files, and document your models for clarity.
 
-- **Seeds & Sources:**  
-  Load CSV reference data (seeds) and configure raw source data (sources) with tests for data quality and freshness.
-
-- **DBT Tests & Doc Blocks:**  
-  Ensure data quality by running tests defined in YAML files, and document your models for clarity.
-
-## Contributing
-
-Feel free to contribute
-
-
+Contributing
+Feel free to fork this repository and contribute by opening issues or pull requests. If you have ideas or improvements, please share them!
