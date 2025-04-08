@@ -1,4 +1,3 @@
-
 ## Project Overview
 
 This project is designed to demonstrate a complete dbt workflow with Snowflake as the data warehouse adapter. It covers the following steps:
@@ -29,18 +28,18 @@ This project is designed to demonstrate a complete dbt workflow with Snowflake a
      Another YAML file (e.g., `source_schema.yml`) in the `models/` directory contains tests for the raw source data in the landing schema. These tests validate that the raw data meets expected quality criteria (e.g., freshness, non-null constraints, unique columns).
 
 ## How to Get Started
+
 1. **Clone the Repository:**
 
    ```bash
    git clone https://github.com/your-username/my_dbt_project.git
    cd my_dbt_project
-Set Up Your dbt Profile:
+   
+### 2. Set Up Your dbt Profile
 
-Configure your Snowflake connection in ~/.dbt/profiles.yml:
+Configure your Snowflake connection in `~/.dbt/profiles.yml`:
 
-yaml
-Copy
-Edit
+```yaml
 my_dbt_project:
   target: dev
   outputs:
@@ -55,67 +54,55 @@ my_dbt_project:
       schema: <your_schema>
       threads: 1
       client_session_keep_alive: False
-Install Dependencies:
 
-If you’re using dbt packages, run:
+### 3. Install Dependencies
 
-bash
-Copy
-Edit
+Install any required dbt packages:
+
+```bash
 dbt deps
-Run Your Models:
 
-Build your project with:
+### 4. Run Your Models
 
-bash
-Copy
-Edit
+Run the models and build the project:
+
+```bash
 dbt run
-Run Tests:
+
+### 5. Run Tests
 
 Validate your models and source data with:
 
-bash
-Copy
-Edit
-dbt test
-Generate Documentation:
+```bash
+dbt run
 
-Create and serve interactive documentation:
+### 6. Generate Documentation
 
-bash
-Copy
-Edit
+Validate your models and source data with:
+
+```bash
 dbt docs generate
 dbt docs serve
-Additional Concepts Covered
-Incremental Materialization:
-Only new or updated rows are processed during each run, making data loads more efficient.
 
-Snapshots:
-Track historical changes in data using dbt snapshots (SCD Type 2).
+## Additional Concepts Covered
 
-Jinja Templating & Macros:
-Write reusable code and dynamically generate SQL queries.
+- **Incremental Materialization:**  
+  Only new or updated rows are processed during each run, making data loads more efficient.
 
-Seeds & Sources:
-Load CSV reference data (seeds) and configure raw source data (sources) with tests for data quality and freshness.
+- **Snapshots:**  
+  Track historical changes in data using dbt snapshots (SCD Type 2).
 
-DBT Tests & Doc Blocks:
-Ensure data quality by running tests defined in YAML files, and document your models for clarity.
+- **Jinja Templating & Macros:**  
+  Write reusable code and dynamically generate SQL queries.
 
-Contributing
-Feel free to fork this repository and contribute by opening issues or pull requests. If you have ideas or improvements, please share them!
+- **Seeds & Sources:**  
+  Load CSV reference data (seeds) and configure raw source data (sources) with tests for data quality and freshness.
 
-License
-This project is licensed under the MIT License. See the LICENSE file for details.
+- **DBT Tests & Doc Blocks:**  
+  Ensure data quality by running tests defined in YAML files, and document your models for clarity.
 
-Acknowledgments
-dbt (Data Build Tool)
+## Contributing
 
-Snowflake
+Feel free to contribute
 
-PyCharm
-
-Community packages like dbt_utils and dbt_expectations
 
